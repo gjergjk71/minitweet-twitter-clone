@@ -4,5 +4,4 @@ from . import views
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
-	path("login", views.custom_login, name="login"),
 ]
