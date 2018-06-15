@@ -24,8 +24,12 @@ def register(request):
 		createUser.firstname = firstname
 		createUser.lastname = lastname
 		createUser.save()
-		user = authenticate(username=username,password=password)
-		return redirect("/feed")
+		user = authenticate(username=request.POST.get("usernameRegister"),
+								password=request.POST.get("passwordRegister"))
+		if user is not None:
+			return redirect("/feed")
+		else:
+			return redirect("/login")
 	else:
 		return redirect("/login")
 
