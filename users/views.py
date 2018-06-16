@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 # Create your views here.
 
+def redirectLogin(request):
+	return redirect("/login")
+
 def custom_login(request):
 	current_user = request.user
 	if current_user.is_authenticated:
