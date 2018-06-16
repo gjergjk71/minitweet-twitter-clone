@@ -35,6 +35,7 @@ LOGIN_REDIRECT_URL = "/feed"
 
 INSTALLED_APPS = [
     'users',
+	'feed',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
