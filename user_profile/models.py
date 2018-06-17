@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
 	user = models.OneToOneField(User,on_delete=models.CASCADE)
+	descritipon = models.TextField(max_length=250)
 	birthday = models.DateTimeField()
 	education = models.CharField(max_length=100)
 	def __str__(self):
