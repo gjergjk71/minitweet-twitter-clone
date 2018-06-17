@@ -24,10 +24,14 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                         </div>
+                        <form method="POST" action="/feed/createTweet/feed">
+                            {% csrf_token %}
                         <div class="panel-body">
-                            <textarea class="form-control" placeholder="What's happening?" rows="3"></textarea>
+                            <textarea name="tweetText" class="form-control" placeholder="What's happening?" rows="3"></textarea>
                             <br />
-                            <a href="#" class="btn btn-primary btn-sm pull-right">Tweet</a>
+                            <button type="submit" class="btn btn-primary btn-sm pull-right">Tweet</button>
+
+                        </form>
                             <div class="clearfix"></div>
                             <hr />
                             <ul class="media-list">
