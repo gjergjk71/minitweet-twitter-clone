@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from .models import Profile,Follow
 # Create your views here.
@@ -15,3 +15,12 @@ def showProfile(request,username):
 
 	return render(request,"profile.html",context)
 
+def followUser(request,ID):
+	follow_args = {
+		"follower":request.user,
+		"following":User.objects.get(pk=ID)
+	}
+	if not Follow.objects.filter(**follow_args):
+		Follow.objects.create(**follow_args)
+
+	return redirect("/profile/{}".format(follow_args["following"].username))
