@@ -68,11 +68,12 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                         </div>
-                        <form method="POST" action="/feed/createTweet/feed">
+                        <form method="POST" action="{% url 'createTweet' %}">
                             {% csrf_token %}
                         <div class="panel-body">
                             <textarea name="tweetText" class="form-control" placeholder="What's happening?" rows="3"></textarea>
                             <br />
+                            <input type="hidden" name="next" value="{{ request.path }}">
                             <button type="submit" class="btn btn-primary btn-sm pull-right">Tweet</button>
 
                         </form>
