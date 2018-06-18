@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from .models import Profile,Follow
+from tweets.models import Tweet
 # Create your views here.
 
 def showProfile(request,username):
 	user = User.objects.get(username=username)
+	tweets = Tweet.objects.filter(user=user)
 	profile = Profile.objects.get(user=user)
 	unfollow_user = False
 	user_followers = len(Follow.objects.filter(follower=user))
@@ -12,8 +14,11 @@ def showProfile(request,username):
 
 	if Follow.objects.filter(follower=request.user,following=user):
 		unfollow_user = True
-	context = {"user_info":user,"profile":profile,"unfollow_user":unfollow_user,
-			"user_followers":user_followers,"user_following":user_following}
+	context = {"user_info":user,"profile":profile,
+				"unfollow_user":unfollow_user,
+				"user_followers":user_followers,
+				"user_following":user_following,
+				"tweets":tweets}
 
 	return render(request,"profile.html",context)
 
