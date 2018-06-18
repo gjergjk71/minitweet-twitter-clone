@@ -9,8 +9,8 @@ def showProfile(request,username):
 	tweets = Tweet.objects.filter(user=user)
 	profile = Profile.objects.get(user=user)
 	unfollow_user = False
-	user_followers = len(Follow.objects.filter(follower=user))
-	user_following = len(Follow.objects.filter(following=user))
+	user_followers = len(Follow.objects.filter(following=user))
+	user_following = len(Follow.objects.filter(follower=user))
 
 	if Follow.objects.filter(follower=request.user,following=user):
 		unfollow_user = True
