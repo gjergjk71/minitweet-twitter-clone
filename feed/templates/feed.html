@@ -48,7 +48,7 @@
                                                   <span class="text-muted pull-right">
                                                       <small class="text-muted">{{tweet.created_date}}</small>
                                                   </span>
-                                                  <strong class="text-success">@ {{tweet.user.username}}</strong>
+                                                  <a href="{% url 'showProfile' tweet.user.username %}"><strong class="text-success">@ {{tweet.user.username}}</strong></a>
                                                   <p>
                                                       {{ tweet.text}}
                                                   </p>
@@ -74,14 +74,13 @@
                                                 <span class="text-muted pull-right">
                                                     <small class="text-muted">{{tweet.created_date}}</small>
                                                 </span>
-                                                <strong class="text-success">@ {{tweet.user.username}}</strong>
-                                                <p>
+                                                  <a href="{% url 'showProfile' tweet.user.username %}"><strong class="text-success">@ {{tweet.user.username}}</strong></a>                                                <p>
                                                     {{ tweet.text}}
                                                 </p>
 
                                             </div>
                                      <div style="margin:5">
-                                      <img style="height:50x;width:20;" src="{% static 'feed/img/like.png' %}" alt="" class="img-circle">
+                                        <img style="height:50x;width:20;" src="{% static 'feed/img/like.png' %}" alt="" class="img-circle">
                                       <img style="height:50x;width:20;" src="{% static 'feed/img/comment.jpg' %}" alt="" class="img-circle">
                                       <img style="height:50x;width:30;" src="{% static 'feed/img/retweet.png' %}" alt="" class="img-circle">
                                     </div>
