@@ -125,5 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATICFILES_DIRS = [
     '/home/gjergj/Desktop/minitweet-twitter-clone/users/static/',
+    '/home/gjergj/Desktop/minitweet-twitter-clone/user_profile/static/',
 ]
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = "/home/gjergj/Desktop/minitweet-twitter-clone/user_profile/static/media/"
+MEDIA_URL = "/media/"
