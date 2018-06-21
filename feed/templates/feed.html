@@ -3,6 +3,10 @@
 
 {% block title %} MiniTweet - Feed {% endblock title %}
 
+{% block head %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{% endblock head %}
+
   {% block content %}
 
   
@@ -36,55 +40,60 @@
                           {% for tweet in tweets %}
                             {% if tweet.user == request.user %}
                                 {% if tweet == latest_current_user_tweet %}
-                                  <div>
-                                      <div class="clearfix"></div>
-                                      <hr />
-                                      <ul class="media-list">
-                                          <li class="media">
-                                              <a href="#" class="pull-left">
-                                                  <img src="{% static 'feed/img/1.png' %}" alt="" class="img-circle">
-                                              </a>
-                                              <div class="media-body">
-                                                  <span class="text-muted pull-right">
-                                                      <small class="text-muted">{{tweet.created_date}}</small>
-                                                  </span>
-                                                  <a href="{% url 'showProfile' tweet.user.username %}"><strong class="text-success">@ {{tweet.user.username}}</strong></a>
-                                                  <p>
-                                                      {{ tweet.text}}
-                                                  </p>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-title p-2 p-t">
+                                                    <a href="{% url 'showProfile' tweet.user %}"><img class="rounded-circle img-thumbnail" src="{% static 'feed/img/1.png' %}"
+                                                    width="64" height="64" alt="Avatar">  <span class="badge badge-dark"><b>{{tweet.user}}</b></a> - <em>{{ tweet.created_date }}</em></span>
+                                                </div>
+                                                <div style="margin: 10px;" class="card-block">
+                                                    <p class="card-text">{{ tweet.text }}</p>
+                                                    <div class="card-text"> <a class="btn btn-sm btn-danger float-left"><b>+10</b></a>
+                                      <a class="btn btn-sm btn-primary-outline float-right"><i class="fa fa-comments-o"></i> 0</a>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="card-footer text-muted">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" placeholder="Comment..."> <span class="input-group-btn">
 
-                                              </div>
-                                       <div style="margin:5">
-                                        <img style="height:50x;width:20;" src="{% static 'feed/img/like.png' %}" alt="" class="img-circle">
-                                        <img style="height:50x;width:20;" src="{% static 'feed/img/comment.jpg' %}" alt="" class="img-circle">
-                                        <img style="height:50x;width:30;" src="{% static 'feed/img/retweet.png' %}" alt="" class="img-circle">
-                                      </div>
-                                  </div>
+                                                <button class="btn btn-primary-outline" type="button"><i class="fa fa-edit"></i></button>
+
+                                              </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 {% endif %}
                               {% else %}
-                                <div>
-                                    <div class="clearfix"></div>
-                                    <hr />
-                                    <ul class="media-list">
-                                        <li class="media">
-                                            <a href="#" class="pull-left">
-                                                <img src="{% static 'feed/img/1.png' %}" alt="" class="img-circle">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="text-muted pull-right">
-                                                    <small class="text-muted">{{tweet.created_date}}</small>
-                                                </span>
-                                                  <a href="{% url 'showProfile' tweet.user.username %}"><strong class="text-success">@ {{tweet.user.username}}</strong></a>                                                <p>
-                                                    {{ tweet.text}}
-                                                </p>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-title p-2 p-t">
+                                                    <a href="{% url 'showProfile' tweet.user %}"><img class="rounded-circle img-thumbnail" src="{% static 'feed/img/1.png' %}"
+                                                    width="64" height="64" alt="Avatar">  <span class="badge badge-dark"><b>{{tweet.user}}</b></a> - <em>{{ tweet.created_date }}</em></span>
+                                                </div>
+                                                <div style="margin: 10px;" class="card-block">
+                                                    <p class="card-text">{{ tweet.text }}</p>
+                                                    <div class="card-text"> <a class="btn btn-sm btn-danger float-left"><b>+10</b></a>
+                                      <a class="btn btn-sm btn-primary-outline float-right"><i class="fa fa-comments-o"></i> 0</a>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="card-footer text-muted">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" placeholder="Comment..."> <span class="input-group-btn">
 
+                                                <button class="btn btn-primary-outline" type="button"><i class="fa fa-edit"></i></button>
+
+                                              </span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                     <div style="margin:5">
-                                        <img style="height:50x;width:20;" src="{% static 'feed/img/like.png' %}" alt="" class="img-circle">
-                                      <img style="height:50x;width:20;" src="{% static 'feed/img/comment.jpg' %}" alt="" class="img-circle">
-                                      <img style="height:50x;width:30;" src="{% static 'feed/img/retweet.png' %}" alt="" class="img-circle">
+                                        </div>
                                     </div>
-                                </div>
                             {% endif %}
                         {% endfor %}
                                 </li>
