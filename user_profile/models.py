@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
 	user = models.OneToOneField(User,on_delete=models.CASCADE)
-	description = models.TextField(max_length=250)
+	description = models.TextField(max_length=250,blank=True)
 	birthday = models.DateTimeField()
-	education = models.CharField(max_length=100)
+	education = models.CharField(max_length=100,blank=True)
 	def __str__(self):
 		return str(self.user)
 class Follow(models.Model):
