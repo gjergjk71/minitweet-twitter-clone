@@ -6,8 +6,8 @@ from tweets.models import Tweet
 
 def showProfile(request,username):
 	user = User.objects.get(username=username)
-	tweets = Tweet.objects.filter(user=user).order_by("-created_date")
 	profile = Profile.objects.get(user=user)
+	tweets = Tweet.objects.filter(profile=profile).order_by("-created_date")
 	unfollow_user = False
 	user_followers = len(Follow.objects.filter(following=user))
 	user_following = len(Follow.objects.filter(follower=user))
