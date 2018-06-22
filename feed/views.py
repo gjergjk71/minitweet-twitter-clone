@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from tweets.models import Tweet
-from user_profile.models import Follow
+from user_profile.models import Follow,Profile
 # Create your views here.
 
 @login_required
@@ -14,8 +14,10 @@ def feed(request):
 		following.append(follow.following)
 
 	tweets = Tweet.objects.filter(user__in=following).order_by("-created_date")
+	current_userProfile = Profile.objects.get(user=current_user)
 	try:
-		latest_current_user_tweet = Tweet.objects.filter(user=current_user).order_by("-created_date")[0]
+		latest_current_user_tweet = Tweet.objects.filter(profile=current_userProfile,
+									user=current_user).order_by("-created_date")[0]
 	except:
 		latest_current_user_tweet = False
 	context = {"tweets":tweets,"latest_current_user_tweet":latest_current_user_tweet}
