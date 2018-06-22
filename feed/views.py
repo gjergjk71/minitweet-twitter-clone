@@ -14,6 +14,9 @@ def feed(request):
 		following.append(follow.following)
 
 	tweets = Tweet.objects.filter(user__in=following).order_by("-created_date")
-	latest_current_user_tweet = Tweet.objects.filter(user=current_user).order_by("-created_date")[0]
+	try:
+		latest_current_user_tweet = Tweet.objects.filter(user=current_user).order_by("-created_date")[0]
+	except:
+		latest_current_user_tweet = False
 	context = {"tweets":tweets,"latest_current_user_tweet":latest_current_user_tweet}
 	return render(request,"feed.html",context)
