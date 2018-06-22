@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from user_profile.models import Profile
 
 # Create your models here.
 
 class Tweet(models.Model):
+	profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
 	user = models.ForeignKey(User,on_delete=models.CASCADE)
 	text = models.TextField(max_length=1000)
 	created_date = models.DateTimeField(auto_now_add=True)
