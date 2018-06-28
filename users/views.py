@@ -7,11 +7,18 @@ from django.contrib.auth.models import User
 def redirectLogin(request):
 	return redirect("/login")
 
-def custom_login(request):
-	current_user = request.user
-	if current_user.is_authenticated:
+def custom_login(request,**kwargs):
+	if request.user.is_authenticated:
 		return redirect("/feed")
-	else:
+	elif request.method == "POST":            
+		username=request.POST.get("username")
+		password = request.POST.get("password")                     
+		user = authenticate(request, username=username, password=password)
+		if user is not None:
+			return login(request)
+		else:
+			return render(request,"registration/login.html",{'invalid': True })
+	elif request.method == "GET":
 		return login(request)
 
 
