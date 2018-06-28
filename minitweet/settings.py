@@ -124,10 +124,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATICFILES_DIRS = [
-    '/home/gjergj/Desktop/minitweet-twitter-clone/users/static/',
-    '/home/gjergj/Desktop/minitweet-twitter-clone/user_profile/static/',
+    os.path.join(BASE_DIR, "static"),
 ]
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = "/home/gjergj/Desktop/minitweet-twitter-clone/user_profile/static/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "static") + "/media/"
 MEDIA_URL = "/media/"
