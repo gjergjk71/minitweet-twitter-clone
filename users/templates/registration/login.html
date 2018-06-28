@@ -1,117 +1,98 @@
 {% load static %}
 
+<html>
 <head>
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<link rel="stylesheet" type="text/css" href="{% static '/users/login/login.css' %}" />
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
+  <!-- Site Properties -->
+  <title>Login Example - Semantic</title>
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui/components/reset.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/site.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/container.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/grid.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/header.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/image.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/menu.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/divider.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/segment.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/form.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/input.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/button.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/list.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/message.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/semantic-ui//components/icon.css' %}">
+
+  <script src="{% static '/semantic-ui//components/form.js' %}"></script>
+  <script src="{% static '/semantic-ui//components/transition.js' %}"></script>
+
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
 </head>
+<body>
 
-<script type="text/javascript">
-	$(function() {
+<div style="margin:200px;">
+	<div class="ui middle aligned center aligned grid">
+	  <div class="column">
+	    <h2 class="ui teal image header">
+	      <img src="" class="image">
+	      <div class="content">
+	        Log-in to your account
+	      </div>
+	    </h2>
+	     <form class="ui form" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <!-- test -->
+                    {% if invalid %}
+                    <div class="ui negative message">
+                      <i class="close icon"></i>
+                      <div class="header">
+                        Invalid username or password!
+                      </div>
+                      <p>Please try again!
+                      </p></div>
+                      {% endif %}
+                      <div class="field">
+                        <input type="text" id="id_username" name="username" placeholder="Username" required>
+                      </div>
+                      <div class="field">
+                        <input type="password" id="id_password" name="password" placeholder="Password" required>
+                      </div>
+                      <div class="field">
+                        <div class="ui radio checkbox">
+                          <input type="checkbox" tabindex="0" class="hidden" value="remember-me">
+                          <label>Remember me</label>
+                        </div>
+                      </div>  
+                      <div class="field">
+                        <a href="#" class="ui right aligned">Forgot Password?</a>
+                      </div>
+                      <button class="fluid ui teal button" type="submit">Sign in</button>
+                    </form>
 
-    $('#login-form-link').click(function(e) {
-		$("#login-form").delay(100).fadeIn(100);
- 		$("#register-form").fadeOut(100);
-		$('#register-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-	$('#register-form-link').click(function(e) {
-		$("#register-form").delay(100).fadeIn(100);
- 		$("#login-form").fadeOut(100);
-		$('#login-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-
-});
-  </script>
-
-
-<div class="container">
-    	<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="panel panel-login">
-					<div class="panel-heading">
-						<div class="row">
-							<div class="col-xs-6">
-								<a href="#" class="active" id="login-form-link">Login</a>
-							</div>
-							<div class="col-xs-6">
-								<a href="#" id="register-form-link">Register</a>
-							</div>
-						</div>
-						<hr>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-lg-12">
-								<form id="login-form" action="{% url 'login' %}" method="post" role="form" style="display: block;">
-								{% csrf_token %}
-									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-									</div>
-									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-									</div>
-									<div class="form-group text-center">
-										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-										<label for="remember"> Remember Me</label>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="text-center">
-													<a href="/password_reset" tabindex="5" class="forgot-password">Forgot Password?</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</form>
-								<form id="register-form" action="{% url 'register' %}" method="post" role="form" style="display: none;">
-													{% csrf_token %}
-									<div class="form-group">
-										<input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="Firstname" value="" required>
-									</div>
-									<div class="form-group">
-										<input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Lastname" value="" required>
-									</div>
-									<div class="form-group">
-										<input type="text" name="usernameRegister" id="usernameRegister" tabindex="1" class="form-control" placeholder="Username" value="" required>
-									</div>
-									<div class="form-group">
-										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" required>
-									</div>
-									<div class="form-group">
-										<input type="passwordRegister" name="passwordRegister" id="passwordRegister" tabindex="2" class="form-control" placeholder="Password" required>
-									</div>
-									<!---
-									<div class="form-group">
-										<input type="password" name="confirm-password2" id="confirm-password2" tabindex="2" class="form-control" placeholder="Confirm Password" required>
-									</div> -->
-									<p id="validate-status"></p>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	    <div class="ui message">
+	      New to us? <a href="#">Sign Up</a>
+	    </div>
+                      <p>&copy; 2017-2018</p>
+	  </div>
 	</div>
+</div>
+</body>
+
+</html>
