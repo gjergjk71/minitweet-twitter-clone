@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from .models import Profile,Follow
 from tweets.models import Tweet
 # Create your views here.
-
+from . import signals
 def showProfile(request,username):
 	user = User.objects.get(username=username)
 	profile = Profile.objects.get(user=user)
