@@ -34,7 +34,7 @@ LOGIN_REDIRECT_URL = "/feed"
 # Application definition
 
 INSTALLED_APPS = [
-    'users',
+    'authentication',
 	'feed',
     'tweets',
     'user_profile',
