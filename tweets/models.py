@@ -5,7 +5,7 @@ from user_profile.models import Profile
 # Create your models here.
 
 class Tweet(models.Model):
-	profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+	profile = models.ForeignKey(Profile,on_delete=models.CASCADE, default="")
 	user = models.ForeignKey(User,on_delete=models.CASCADE)
 	text = models.TextField(max_length=1000)
 	created_date = models.DateTimeField(auto_now_add=True)
