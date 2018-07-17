@@ -61,7 +61,9 @@
   
   
   
+  {% block footer %}
       <!-- Footer -->
+    
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; MiniTweet 2018</p>
@@ -72,5 +74,5 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'feed/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'feed/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
+  {% endblock footer %}
 </html>
