@@ -27,16 +27,20 @@ def register(request): #
 	if request.method == "POST":
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
-			form.save()
+			user = form.save(commit=False)
+			user.first_name = request.POST.get("first_name")
+			user.last_name = request.POST.get("last_name")
+			user.save()			
 			birthday = request.POST.get("birthday")
 			education = request.POST.get("education")
 			username = form.cleaned_data.get('username')
 			raw_password = form.cleaned_data.get('password')
 
-			user = authenticate(username=username,
-									password=raw_password)
-			Profile.objects.create(user=user,birthday=birthday,education=education)
 
+			user_profile = Profile.objects.get(user=user)
+			user_profile.birthday = birthday
+			user_profile.education = education
+			user_profile.save()
 			return redirect('/feed')
 	else:
 		form = UserCreationForm()
