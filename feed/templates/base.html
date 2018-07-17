@@ -12,7 +12,7 @@
     <title>{% block title %}Minitweet {% endblock title %}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'feed/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{% static 'feed/css/blog-home.css' %}" rel="stylesheet">
     {% block head %} {% endblock head %}
@@ -51,11 +51,12 @@
       </div>
     </nav>
   
+  <div style="margin-top: 100px;">
   {% block content %}
   
   
   {% endblock content %}
-  
+  </div>
   
   </body>
   
