@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to="profile_photo", null=True, blank=True)
     description = models.TextField(max_length=250, blank=True)
     birthday = models.DateTimeField(null=True, blank=True)
     education = models.CharField(max_length=100, blank=True)
