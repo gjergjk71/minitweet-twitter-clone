@@ -78,4 +78,4 @@ def newMessage(request, username):
         sender=sender,
         receiver=receiver,
         msg_content=message)
-    return redirect("/account/chat/{}".format(username))
+    return redirect("/chat/{}".format(username))
