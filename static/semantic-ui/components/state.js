@@ -340,7 +340,7 @@ $.fn.state = function(parameters) {
             var
               previousText = module.get.text()
             ;
-            module.debug('Flashing text message', text, duration);
+            module.debug('Flashing text templates', text, duration);
             text     = text     || settings.text.flash;
             duration = duration || settings.flashDuration;
             callback = callback || function() {};

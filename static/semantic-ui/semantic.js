@@ -9218,9 +9218,9 @@ $.fn.search.settings = {
       ;
       if(message !== undefined && type !== undefined) {
         html +=  ''
-          + '<div class="message ' + type + '">'
+          + '<div class="templates ' + type + '">'
         ;
-        // message type
+        // templates type
         if(type == 'empty') {
           html += ''
             + '<div class="header">No Results</div class="header">'
@@ -11981,7 +11981,7 @@ $.fn.state = function(parameters) {
             var
               previousText = module.get.text()
             ;
-            module.debug('Flashing text message', text, duration);
+            module.debug('Flashing text templates', text, duration);
             text     = text     || settings.text.flash;
             duration = duration || settings.flashDuration;
             callback = callback || function() {};

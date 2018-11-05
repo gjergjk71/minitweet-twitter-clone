@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 	'feed',
     'tweets',
     'user_profile',
+    'message',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
